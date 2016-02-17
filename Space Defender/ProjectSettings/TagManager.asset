@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - UiController
+  - PlayerWeaponLaser
+  - ResourceProvider
+  - PlayerWeaponLaserExplosion
   layers:
   - Default
   - TransparentFX

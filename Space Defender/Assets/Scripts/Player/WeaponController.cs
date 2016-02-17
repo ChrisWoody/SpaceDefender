@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Player.Weapon_Modules;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
     public class WeaponController : MonoBehaviour
     {
+        /// <summary>
+        /// Key is number on keyboard.
+        /// </summary>
         private IDictionary<int, WeaponModuleBase> _weaponModules;
 
         private WeaponModuleBase SelectedWeapon
@@ -22,7 +26,7 @@ namespace Assets.Scripts.Player
         {
             _weaponModules = new Dictionary<int, WeaponModuleBase>
             {
-
+                {1, new LaserModule()},
             };
 
             //UiController.Pausing += OnPausing;
@@ -99,8 +103,7 @@ namespace Assets.Scripts.Player
     {
         public static readonly KeyCode[] NumberKeyCodes =
         {
-            KeyCode.Alpha0, KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4,
-            KeyCode.Alpha5, KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8, KeyCode.Alpha9
+            KeyCode.Alpha0, KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4
         };
     }
 }
