@@ -8,6 +8,8 @@ TagManager:
   - PlayerWeaponLaser
   - ResourceProvider
   - PlayerWeaponLaserExplosion
+  - PlayerWeaponRailgunExplosion
+  - Enemy
   layers:
   - Default
   - TransparentFX

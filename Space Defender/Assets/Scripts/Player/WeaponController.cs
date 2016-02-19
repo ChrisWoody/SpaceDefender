@@ -27,6 +27,8 @@ namespace Assets.Scripts.Player
             _weaponModules = new Dictionary<int, WeaponModuleBase>
             {
                 {1, new LaserModule()},
+
+                {3, new RailgunModule()},
             };
 
             //UiController.Pausing += OnPausing;
