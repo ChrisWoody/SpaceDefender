@@ -27,7 +27,7 @@ namespace Assets.Scripts.Player
             _weaponModules = new Dictionary<int, WeaponModuleBase>
             {
                 {1, new LaserModule()},
-
+                {2, new MissileBarrageModule()},
                 {3, new RailgunModule()},
             };
 
