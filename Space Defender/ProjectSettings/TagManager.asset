@@ -11,6 +11,7 @@ TagManager:
   - PlayerWeaponRailgunExplosion
   - Enemy
   - PlayerWeaponMissile
+  - PlayerWeaponMissileExplosion
   layers:
   - Default
   - TransparentFX

@@ -37,23 +37,17 @@ namespace Assets.Scripts.Player.Weapon_Modules
 
         private void FireMissileBarrage()
         {
-            var offsets = new float[] {-3, -2, -1, 1, 2, 3}; // items like -2, -1, 1, 2 etc
+            var offsets = new float[] {-2f, -1.5f, -1f, 1f, 1.5f, 2f};
 
             for (var i = 0; i < offsets.Length; i++)
             {
-                var offset = Vector3.Cross(CameraForward, PlayerCamera.up) * offsets[i];
+                var offset = (Vector3.Cross(CameraForward, PlayerCamera.up) * offsets[i]) - (PlayerCamera.up * 0.5f);
                 var missile = Object.Instantiate(ResourceProvider.Missile);
                 missile.position = CameraPosition + offset;
                 missile.up = CameraForward;
                 missile.parent = PlayerCamera.transform;
-                missile.GetComponent<Missile>().FireWithOrder(i);   
+                missile.GetComponent<Missile>().FireWithOrder(Mathf.Abs(offsets[i]));
             }
-
-
-            // will spawn 10 missile (5 either side), that will be told to fire after some small delay, getting larger the further it is
-            // random implimentation, can give it an index (0-4) which will multiply that by some set delay, so they all fire consistently 
-
-            // will need to be a child of component of the player, and when it fires it will remove that relationship
         }
 
         private void Restart()

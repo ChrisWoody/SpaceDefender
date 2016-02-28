@@ -10,10 +10,10 @@ GameObject:
   - 4: {fileID: 499394}
   - 33: {fileID: 3315068}
   - 23: {fileID: 2384684}
-  - 114: {fileID: 11422762}
+  - 114: {fileID: 11417648}
   m_Layer: 0
-  m_Name: RailgunExplosion
-  m_TagString: PlayerWeaponRailgunExplosion
+  m_Name: MissileExplosion
+  m_TagString: PlayerWeaponMissileExplosion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139512}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &11422762
+--- !u!114 &11417648
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -71,7 +71,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 139512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b2dee9c7855f854c8e3c9c1e1c77705, type: 3}
+  m_Script: {fileID: 11500000, guid: ce33f04e5eac9ab4d828e9ede8d90668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &100100000
@@ -87,7 +87,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
-      value: PlayerWeaponRailgunExplosion
+      value: PlayerWeaponMissileExplosion
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x

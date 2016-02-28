@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Game;
+using UnityEngine;
 
 namespace Assets.Scripts.Player.Weapons
 {
@@ -11,7 +12,7 @@ namespace Assets.Scripts.Player.Weapons
         private float _elapsed;
         private const float Lifetime = 0.8f;
 
-        private const float FireOffset = 0.1f;
+        private const float FireOffset = 0.3f;
         private float _fireTime;
         private bool _fired;
 
@@ -45,14 +46,16 @@ namespace Assets.Scripts.Player.Weapons
             {
                 // in future will get component
 
-                // apply damage, or spawn explosion which does that
+                var missileExplosion = Instantiate(ResourceProvider.MissileExplosion);
+                missileExplosion.position = transform.position;
+
                 Destroy(gameObject);
             }
         }
 
-        public void FireWithOrder(int order) // should be 0-4
+        public void FireWithOrder(float delay)
         {
-            _fireTime = order*FireOffset;
+            _fireTime = delay*FireOffset;
 
             Destroy(gameObject, 60f);
         }

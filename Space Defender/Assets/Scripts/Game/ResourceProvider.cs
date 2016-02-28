@@ -35,5 +35,8 @@ namespace Assets.Scripts.Game
 
         [Description("Player/Weapons/Missile")]
         public static Transform Missile { get; private set; }
+
+        [Description("Player/Weapons/MissileExplosion")]
+        public static Transform MissileExplosion { get; private set; }
     }
 }
