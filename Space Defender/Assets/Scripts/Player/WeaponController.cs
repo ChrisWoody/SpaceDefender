@@ -29,6 +29,7 @@ namespace Assets.Scripts.Player
                 {1, new LaserModule()},
                 {2, new MissileBarrageModule()},
                 {3, new RailgunModule()},
+                {4, new ArouraBombModule()},
             };
 
             //UiController.Pausing += OnPausing;

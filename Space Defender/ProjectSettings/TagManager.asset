@@ -12,6 +12,8 @@ TagManager:
   - Enemy
   - PlayerWeaponMissile
   - PlayerWeaponMissileExplosion
+  - PlayerWeaponArouraBomb
+  - PlayerWeaponArouraBombExplosion
   layers:
   - Default
   - TransparentFX

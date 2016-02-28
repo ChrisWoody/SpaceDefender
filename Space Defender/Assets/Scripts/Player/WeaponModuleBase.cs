@@ -7,6 +7,7 @@ namespace Assets.Scripts.Player
         // TODO: look at adding 'cooldown' and 'charging' logic here, as each weapon module is using these.
 
         protected Transform PlayerCamera;
+        protected Transform Player;
 
         protected Vector3 CameraPosition
         {
@@ -21,6 +22,7 @@ namespace Assets.Scripts.Player
         protected WeaponModuleBase()
         {
             PlayerCamera = Camera.main.transform;
+            Player = Object.FindObjectOfType<Player>().transform;
         }
 
         public abstract string Name { get; }
