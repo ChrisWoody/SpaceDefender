@@ -47,5 +47,8 @@ namespace Assets.Scripts.Game
 
         [Description("Enemy/Weapons/TurretLaser")]
         public static Transform TurretLaser { get; private set; }
+
+        [Description("Enemy/Weapons/LanceRound")]
+        public static Transform LanceRound { get; private set; }
     }
 }

@@ -7,7 +7,7 @@ namespace Assets.Scripts.Enemy.Weapons
     public class EnemyLance : EnemyWeaponBase
     {
         private float _cooldownElapsed;
-        private const float Cooldown = 0.5f;
+        private const float Cooldown = 2f;
 
         private const float FiringAngle = 90f;
         private bool _isPlayerInFiringAngle;
@@ -28,10 +28,12 @@ namespace Assets.Scripts.Enemy.Weapons
                 {
                     _cooldownElapsed = 0f;
 
-                    var dir = (Player.position - transform.position).normalized;
-                    //var laser = Instantiate(ResourceProvider.TurretLaser);
+                    var lance = Instantiate(ResourceProvider.LanceRound);
 
-                    //laser.GetComponent<EnemyTurretLaser>().Fire(transform.position, dir);
+                    var dir = (Player.position - transform.position).normalized;
+                    var pos = transform.position + (dir*lance.transform.lossyScale.y);
+
+                    lance.GetComponent<EnemyLanceRound>().Fire(pos, dir);
                 }
             }
         }

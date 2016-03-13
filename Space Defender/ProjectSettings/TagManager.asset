@@ -16,6 +16,8 @@ TagManager:
   - PlayerWeaponArouraBombExplosion
   - EnemyWeaponTurretLaser
   - EnemyWeaponTurret
+  - EnemyWeaponLance
+  - EnemyWeaponLanceRound
   layers:
   - Default
   - TransparentFX
