@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using Assets.Scripts.Game;
+using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace Assets.Scripts.Player
 {
@@ -6,6 +9,8 @@ namespace Assets.Scripts.Player
     public class Player : MonoBehaviour
     {
         public float Speed = 75.0f;
+
+        public float Health { get; private set; }
 
         private bool _paused;
 
@@ -27,6 +32,31 @@ namespace Assets.Scripts.Player
             GetComponent<Rigidbody>().AddForce(dir * speed, ForceMode.Force);
         }
 
+        private void Awake()
+        {
+            Assert.IsTrue(FindObjectsOfType<GameController>().Count() == 1,
+                "Scene can only have 1 " + GetType().Name);
+
+            Health = GameController.PlayerHealth;
+        }
+
+        public void HitLaser()
+        {
+            Health -= GameController.LaserDamage;
+            UpdatePlayerAfterHit();
+        }
+
+        public void HitLance()
+        {
+            Health -= GameController.LanceDamage;
+            UpdatePlayerAfterHit();
+        }
+
+        private void UpdatePlayerAfterHit()
+        {
+            HitWithCurrentHealth.SafeCallDelegate(Health);
+        }
+
         private void Start()
         {
 
@@ -36,5 +66,7 @@ namespace Assets.Scripts.Player
         {
 
         }
+
+        public event FloatDelegate HitWithCurrentHealth;
     }
 }

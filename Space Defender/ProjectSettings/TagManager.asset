@@ -18,6 +18,7 @@ TagManager:
   - EnemyWeaponTurret
   - EnemyWeaponLance
   - EnemyWeaponLanceRound
+  - GameController
   layers:
   - Default
   - TransparentFX

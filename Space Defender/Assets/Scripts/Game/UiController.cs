@@ -33,5 +33,10 @@ namespace Assets.Scripts.Game
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+
+        // Note for future. As a possible implementation could have this class subscribe to events fired on the player and enemy,
+        // so even though player/enemy needs to call something when things happen, it would make this and game controller a bit simplier.
+        // Its not end of the world if they need to explicity notify these, but there could be multiple things it has to call.
+        // And becaues its cool.
     }
 }
