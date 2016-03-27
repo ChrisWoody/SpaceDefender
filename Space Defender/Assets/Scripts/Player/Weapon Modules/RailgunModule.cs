@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Assets.Scripts.Enemy.Weapons;
 using Assets.Scripts.Game;
 using UnityEngine;
 
@@ -46,13 +47,16 @@ namespace Assets.Scripts.Player.Weapon_Modules
             var backwardHits = Physics.RaycastAll(otherPoint, -CameraForward, RaycastDistance);
 
             // TODO: replace tag check with component of enemy base once implemented
-            var hits = forwardHits.Where(x => x.transform.tag.Contains("Enemy")).Select(x => x.point)
-                .Concat(backwardHits.Where(x => x.transform.tag.Contains("Enemy")).Select(x => x.point));
+            var hits = forwardHits.Where(x => x.transform.tag.Contains("Enemy"))
+                .Concat(backwardHits.Where(x => x.transform.tag.Contains("Enemy")));
 
-            foreach (var hitPos in hits)
+            foreach (var hit in hits)
             {
-                var railgunExplosio = Object.Instantiate(ResourceProvider.RailgunExplosion);
-                railgunExplosio.position = hitPos;
+                var railgunExplosion = Object.Instantiate(ResourceProvider.RailgunExplosion);
+                railgunExplosion.position = hit.point;
+
+                // NOTE: in future need to get weapon and non/weapon class, and hit might instead come from an explosion
+                railgunExplosion.transform.GetComponent<EnemyWeaponBase>().Hit(GameController.PlayerRailgunDamage);
             }
         }
 

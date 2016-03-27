@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Game;
+﻿using Assets.Scripts.Enemy.Weapons;
+using Assets.Scripts.Game;
 using UnityEngine;
 
 namespace Assets.Scripts.Player.Weapons
@@ -11,7 +12,9 @@ namespace Assets.Scripts.Player.Weapons
         {
             if (other.transform.tag.Contains("Enemy"))
             {
-                // in future will get component
+                other.transform.GetComponent<EnemyWeaponBase>().Hit(GameController.PlayerArouraBombDamage);
+
+                // in future will get component, and explosion will cause damage to other enemy bits
 
                 var arouraBombExplosion = Instantiate(ResourceProvider.ArouraBombExplosion);
                 arouraBombExplosion.position = transform.position;

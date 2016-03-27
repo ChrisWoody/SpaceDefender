@@ -40,15 +40,9 @@ namespace Assets.Scripts.Player
             Health = GameController.PlayerHealth;
         }
 
-        public void HitLaser()
+        public void Hit(float damage)
         {
-            Health -= GameController.LaserDamage;
-            UpdatePlayerAfterHit();
-        }
-
-        public void HitLance()
-        {
-            Health -= GameController.LanceDamage;
+            Health -= damage;
             UpdatePlayerAfterHit();
         }
 

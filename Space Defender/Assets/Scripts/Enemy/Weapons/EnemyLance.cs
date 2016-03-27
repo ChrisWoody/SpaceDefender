@@ -12,6 +12,11 @@ namespace Assets.Scripts.Enemy.Weapons
         private const float FiringAngle = 90f;
         private bool _isPlayerInFiringAngle;
 
+        protected override void OnAwake()
+        {
+            Health = GameController.EnemyLanceHealth;
+        }
+
         protected override void OnStart()
         {
             StartCoroutine(DetermineAngleToPlayer());

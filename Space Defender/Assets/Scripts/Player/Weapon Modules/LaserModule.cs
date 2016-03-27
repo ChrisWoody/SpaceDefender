@@ -41,6 +41,8 @@ namespace Assets.Scripts.Player.Weapon_Modules
 
             var down = Vector3.down*0.25f;
 
+            // TODO: add logic to 'hit' enemy and apply laser damage
+
             if (Physics.Raycast(PlayerCamera.position-Vector3.left+down, CameraForward, out left))
             {
                 var laser = Object.Instantiate(ResourceProvider.Laser);

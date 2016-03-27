@@ -7,9 +7,18 @@ namespace Assets.Scripts.Game
 {
     public class GameController : MonoBehaviour
     {
+        // NOTE: all these healths/damages are temporary, will need to be balanced at some point
+
         public const float PlayerHealth = 100f;
-        public const float LaserDamage = 0.5f;
-        public const float LanceDamage = 5f;
+        public const float PlayerLaserDamage = 5f;
+        public const float PlayerMissileDamage = 40f;
+        public const float PlayerRailgunDamage = 100f;
+        public const float PlayerArouraBombDamage = 200f;
+
+        public const float EnemyLaserHealth = 50f;
+        public const float EnemyLanceHealth = 300f;
+        public const float EnemyLaserDamage = 0.5f;
+        public const float EnemyLanceDamage = 5f;
 
         void Awake()
         {

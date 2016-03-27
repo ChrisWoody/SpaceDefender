@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Game;
+﻿using Assets.Scripts.Enemy.Weapons;
+using Assets.Scripts.Game;
 using UnityEngine;
 
 namespace Assets.Scripts.Player.Weapons
@@ -44,7 +45,7 @@ namespace Assets.Scripts.Player.Weapons
         {
             if (other.transform.tag.Contains("Enemy"))
             {
-                // in future will get component
+                other.transform.GetComponent<EnemyWeaponBase>().Hit(GameController.PlayerMissileDamage);
 
                 var missileExplosion = Instantiate(ResourceProvider.MissileExplosion);
                 missileExplosion.position = transform.position;

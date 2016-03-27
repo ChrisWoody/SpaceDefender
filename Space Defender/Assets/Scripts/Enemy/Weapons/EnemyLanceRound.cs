@@ -1,13 +1,19 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Game;
+using UnityEngine;
 
 namespace Assets.Scripts.Enemy.Weapons
 {
     [RequireComponent(typeof(Collider))]
     public class EnemyLanceRound : EnemyWeaponBase
     {
+        protected override void OnAwake() {}
         protected override void OnStart() {}
-
         protected override void OnUpdate() {}
+
+        protected override bool IsWeapon()
+        {
+            return true;
+        }
 
         public void Fire(Vector3 pos, Vector3 dir)
         {
@@ -21,7 +27,8 @@ namespace Assets.Scripts.Enemy.Weapons
         {
             if (other.tag == "Player")
             {
-                // ATM we'll just do one hit against the player, could try a constant damage in the future
+                Player.GetComponent<Player.Player>().Hit(GameController.EnemyLanceDamage);
+
                 GetComponent<Collider>().enabled = false;
             }
         }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Game;
+using UnityEngine;
 
 namespace Assets.Scripts.Enemy.Weapons
 {
@@ -8,13 +9,21 @@ namespace Assets.Scripts.Enemy.Weapons
     {
         private const float Speed = 60f;
 
+        protected override void OnAwake() {}
         protected override void OnStart() {}
         protected override void OnUpdate() {}
+
+        protected override bool IsWeapon()
+        {
+            return true;
+        }
 
         void OnTriggerEnter(Collider other)
         {
             if (other.tag == "Player")
             {
+                Player.GetComponent<Player.Player>().Hit(GameController.EnemyLaserDamage);
+
                 Destroy(gameObject);
             }
         }

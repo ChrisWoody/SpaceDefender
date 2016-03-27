@@ -14,6 +14,11 @@ namespace Assets.Scripts.Enemy.Weapons
 
         // TODO: show point light as laser is fired
 
+        protected override void OnAwake()
+        {
+            Health = GameController.EnemyLaserHealth;
+        }
+
         protected override void OnStart()
         {
             StartCoroutine(DetermineAngleToPlayer());
