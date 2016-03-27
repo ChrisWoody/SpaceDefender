@@ -45,7 +45,7 @@ namespace Assets.Scripts.Player.Weapons
         {
             if (other.transform.tag.Contains("Enemy"))
             {
-                other.transform.GetComponent<EnemyWeaponBase>().Hit(GameController.PlayerMissileDamage);
+                other.transform.GetComponent<EnemyBase>().Hit(GameController.PlayerMissileDamage);
 
                 var missileExplosion = Instantiate(ResourceProvider.MissileExplosion);
                 missileExplosion.position = transform.position;

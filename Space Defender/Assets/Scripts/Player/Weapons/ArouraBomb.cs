@@ -12,7 +12,7 @@ namespace Assets.Scripts.Player.Weapons
         {
             if (other.transform.tag.Contains("Enemy"))
             {
-                other.transform.GetComponent<EnemyWeaponBase>().Hit(GameController.PlayerArouraBombDamage);
+                other.transform.GetComponent<EnemyBase>().Hit(GameController.PlayerArouraBombDamage);
 
                 // in future will get component, and explosion will cause damage to other enemy bits
 

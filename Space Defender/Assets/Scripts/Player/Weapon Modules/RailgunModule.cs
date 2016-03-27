@@ -56,7 +56,7 @@ namespace Assets.Scripts.Player.Weapon_Modules
                 railgunExplosion.position = hit.point;
 
                 // NOTE: in future need to get weapon and non/weapon class, and hit might instead come from an explosion
-                railgunExplosion.transform.GetComponent<EnemyWeaponBase>().Hit(GameController.PlayerRailgunDamage);
+                railgunExplosion.transform.GetComponent<EnemyBase>().Hit(GameController.PlayerRailgunDamage);
             }
         }
 

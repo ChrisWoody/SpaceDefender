@@ -5,18 +5,9 @@ namespace Assets.Scripts.Enemy.Weapons
 {
     [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(Rigidbody))]
-    public class EnemyTurretLaser : EnemyWeaponBase
+    public class EnemyLaserRound : EnemyWeaponBase
     {
         private const float Speed = 60f;
-
-        protected override void OnAwake() {}
-        protected override void OnStart() {}
-        protected override void OnUpdate() {}
-
-        protected override bool IsWeapon()
-        {
-            return true;
-        }
 
         void OnTriggerEnter(Collider other)
         {

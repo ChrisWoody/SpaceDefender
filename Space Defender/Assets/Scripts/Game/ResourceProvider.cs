@@ -45,10 +45,10 @@ namespace Assets.Scripts.Game
         [Description("Player/Weapons/ArouraBombExplosion")]
         public static Transform ArouraBombExplosion { get; private set; }
 
-        [Description("Enemy/Weapons/TurretLaser")]
-        public static Transform TurretLaser { get; private set; }
+        [Description("Enemy/Weapons/LaserRound")]
+        public static Transform EnemyLaserRound { get; private set; }
 
         [Description("Enemy/Weapons/LanceRound")]
-        public static Transform LanceRound { get; private set; }
+        public static Transform EnemyLanceRound { get; private set; }
     }
 }

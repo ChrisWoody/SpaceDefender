@@ -14,7 +14,7 @@ GameObject:
   - 54: {fileID: 5496314}
   - 114: {fileID: 11498058}
   m_Layer: 0
-  m_Name: TurretLaser
+  m_Name: LaserRound
   m_TagString: EnemyWeaponTurretLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

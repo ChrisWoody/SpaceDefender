@@ -4,25 +4,23 @@ using UnityEngine;
 
 namespace Assets.Scripts.Enemy.Weapons
 {
-    public class EnemyTurret : EnemyWeaponBase
+    public class EnemyLanceTurret : EnemyBase
     {
         private float _cooldownElapsed;
-        private const float Cooldown = 0.5f;
+        private const float Cooldown = 2f;
 
-        private const float FiringAngle = 90f; // might change later
+        private const float FiringAngle = 90f;
         private bool _isPlayerInFiringAngle;
-
-        // TODO: show point light as laser is fired
 
         protected override void OnAwake()
         {
-            Health = GameController.EnemyLaserHealth;
+            Health = GameController.EnemyLanceHealth;
         }
 
         protected override void OnStart()
         {
             StartCoroutine(DetermineAngleToPlayer());
-            _cooldownElapsed = Random.value*Cooldown;
+            _cooldownElapsed = Random.value * Cooldown;
         }
 
         protected override void OnUpdate()
@@ -35,10 +33,12 @@ namespace Assets.Scripts.Enemy.Weapons
                 {
                     _cooldownElapsed = 0f;
 
-                    var dir = (Player.position - transform.position).normalized;
-                    var laser = Instantiate(ResourceProvider.TurretLaser);
+                    var lance = Instantiate(ResourceProvider.EnemyLanceRound);
 
-                    laser.GetComponent<EnemyTurretLaser>().Fire(transform.position, dir);
+                    var dir = (Player.position - transform.position).normalized;
+                    var pos = transform.position + (dir*lance.transform.lossyScale.y);
+
+                    lance.GetComponent<EnemyLanceRound>().Fire(pos, dir);
                 }
             }
         }

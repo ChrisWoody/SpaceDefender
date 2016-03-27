@@ -23,12 +23,12 @@ namespace Assets.Scripts.Game
             FindObjectOfType<Player.Player>().HitWithCurrentHealth += OnPlayerHit;
             FindObjectOfType<GameController>().GameOver += OnGameOver;
 
-            foreach (var enemyTurret in FindObjectsOfType<EnemyTurret>())
+            foreach (var enemyTurret in FindObjectsOfType<EnemyLaserTurret>())
             {
                 enemyTurret.HitWithCurrentHealth += OnEnemyLaserTurretHit;
             }
 
-            foreach (var enemyLances in FindObjectsOfType<EnemyLance>())
+            foreach (var enemyLances in FindObjectsOfType<EnemyLanceTurret>())
             {
                 enemyLances.HitWithCurrentHealth += OnEnemyLanceTurretHit;
             }

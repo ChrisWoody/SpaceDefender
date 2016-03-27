@@ -14,9 +14,9 @@ TagManager:
   - PlayerWeaponMissileExplosion
   - PlayerWeaponArouraBomb
   - PlayerWeaponArouraBombExplosion
-  - EnemyWeaponTurretLaser
-  - EnemyWeaponTurret
-  - EnemyWeaponLance
+  - EnemyWeaponLaserRound
+  - EnemyWeaponLaserTurret
+  - EnemyWeaponLanceTurret
   - EnemyWeaponLanceRound
   - GameController
   layers:

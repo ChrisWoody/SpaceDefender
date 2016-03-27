@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2309552}
   - 114: {fileID: 11472060}
   m_Layer: 0
-  m_Name: Lance
+  m_Name: LanceTurret
   m_TagString: EnemyWeaponLance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
