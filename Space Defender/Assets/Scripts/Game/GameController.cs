@@ -9,6 +9,8 @@ namespace Assets.Scripts.Game
     {
         // NOTE: all these healths/damages are temporary, will need to be balanced at some point
 
+        private bool _gameOver;
+
         public const float PlayerHealth = 100f;
         public const float PlayerLaserDamage = 5f;
         public const float PlayerMissileDamage = 40f;
@@ -41,10 +43,13 @@ namespace Assets.Scripts.Game
 
         private void OnPlayerHitWithCurrentHealth(float val)
         {
-            if (val <= 0f)
+            if (!_gameOver && val <= 0f)
             {
-                // game over, call event to notify ui and prompt to retry
+                _gameOver = true;
+                GameOver.SafeCallDelegate();
             }
         }
+
+        public event VoidDelegate GameOver;
     }
 }
