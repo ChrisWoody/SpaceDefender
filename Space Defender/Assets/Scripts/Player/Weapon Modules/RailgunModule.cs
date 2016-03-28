@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Assets.Scripts.Enemy;
 using Assets.Scripts.Enemy.Weapons;
 using Assets.Scripts.Game;
 using UnityEngine;

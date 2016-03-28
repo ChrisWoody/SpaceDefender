@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Enemy.Weapons
+namespace Assets.Scripts.Enemy
 {
     public abstract class EnemyBase : MonoBehaviour
     {
