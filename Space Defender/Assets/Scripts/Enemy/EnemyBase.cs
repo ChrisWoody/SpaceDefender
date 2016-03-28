@@ -26,14 +26,22 @@ namespace Assets.Scripts.Enemy
 
         public void Hit(float damage)
         {
+            if (IsEnemyShip) return;
+
             Health -= damage;
-            HitWithCurrentHealth.SafeCallDelegate(Health);
+
+            if (Health <= 0f)
+            {
+                Death.SafeCallDelegate();
+                Destroy(gameObject);
+            }
         }
 
+        protected virtual bool IsEnemyShip { get { return false; } }
         protected abstract void OnAwake();
         protected abstract void OnStart();
         protected abstract void OnUpdate();
 
-        public event FloatDelegate HitWithCurrentHealth;
+        public event VoidDelegate Death;
     }
 }

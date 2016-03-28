@@ -25,12 +25,12 @@ namespace Assets.Scripts.Game
 
             foreach (var enemyTurret in FindObjectsOfType<EnemyLaserTurret>())
             {
-                enemyTurret.HitWithCurrentHealth += OnEnemyLaserTurretHit;
+                enemyTurret.Death += OnEnemyLaserTurretDeath;
             }
 
             foreach (var enemyLances in FindObjectsOfType<EnemyLanceTurret>())
             {
-                enemyLances.HitWithCurrentHealth += OnEnemyLanceTurretHit;
+                enemyLances.Death += OnEnemyLanceTurretHit;
             }
             
 
@@ -74,14 +74,14 @@ namespace Assets.Scripts.Game
             //Debug.Log(string.Format("Player hit, health: {0}", health));
         }
 
-        private static void OnEnemyLaserTurretHit(float health)
+        private static void OnEnemyLaserTurretDeath()
         {
-            Debug.Log(string.Format("Enemy turret hit, health: {0}", health));
+            Debug.Log("Enemy laser turret died");
         }
 
-        private static void OnEnemyLanceTurretHit(float health)
+        private static void OnEnemyLanceTurretHit()
         {
-            Debug.Log(string.Format("Enemy lance hit, health: {0}", health));
+            Debug.Log("Enemy lance turret died");
         }
 
         private static void OnGameOver()
