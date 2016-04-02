@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Game;
+﻿using Assets.Scripts.Enemy;
+using Assets.Scripts.Game;
 using Assets.Scripts.Player.Weapons;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace Assets.Scripts.Player.Weapon_Modules
         }
 
         private float _elapsed;
-        private const float FireRate = 2f;
+        private const float FireRate = 0.5f;
 
         public override void OnUnselected()
         {
@@ -41,14 +42,9 @@ namespace Assets.Scripts.Player.Weapon_Modules
 
             var down = Vector3.down*0.25f;
 
-            // TODO: add logic to 'hit' enemy and apply laser damage
-
             if (Physics.Raycast(PlayerCamera.position-Vector3.left+down, CameraForward, out left))
             {
-                var laser = Object.Instantiate(ResourceProvider.Laser);
-                laser.GetComponent<Laser>().SetLaserPositionsAndFire(PlayerCamera.position, left.point);
-                var laserExplosion = Object.Instantiate(ResourceProvider.LaserExplosion);
-                laserExplosion.position = left.point;
+                FireLaserThatHitSomething(left);
             }
             else
             {
@@ -58,16 +54,24 @@ namespace Assets.Scripts.Player.Weapon_Modules
 
             if (Physics.Raycast(PlayerCamera.position+Vector3.left + down, CameraForward, out right))
             {
-                var laser = Object.Instantiate(ResourceProvider.Laser);
-                laser.GetComponent<Laser>().SetLaserPositionsAndFire(PlayerCamera.position, right.point);
-                var laserExplosion = Object.Instantiate(ResourceProvider.LaserExplosion);
-                laserExplosion.position = right.point;
+                FireLaserThatHitSomething(right);
             }
             else
             {
                 var laser = Object.Instantiate(ResourceProvider.Laser);
                 laser.GetComponent<Laser>().SetLaserPositionsAndFire(PlayerCamera.position + Vector3.left + down, PlayerCamera.position + (CameraForward * 1000f));
             }
+        }
+
+        private void FireLaserThatHitSomething(RaycastHit hit)
+        {
+            var laser = Object.Instantiate(ResourceProvider.Laser);
+            laser.GetComponent<Laser>().SetLaserPositionsAndFire(PlayerCamera.position, hit.point);
+            var laserExplosion = Object.Instantiate(ResourceProvider.LaserExplosion);
+            laserExplosion.position = hit.point;
+            var enemy = hit.transform.GetComponent<EnemyBase>();
+            if (enemy != null)
+                enemy.Hit(GameController.PlayerLaserDamage);
         }
 
         private void Restart()

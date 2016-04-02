@@ -32,7 +32,7 @@ namespace Assets.Scripts.Enemy
 
             if (Health <= 0f)
             {
-                Death.SafeCallDelegate();
+                FireDeathEvent();
                 Destroy(gameObject);
             }
         }
@@ -43,5 +43,10 @@ namespace Assets.Scripts.Enemy
         protected abstract void OnUpdate();
 
         public event VoidDelegate Death;
+
+        protected void FireDeathEvent()
+        {
+            Death.SafeCallDelegate();
+        }
     }
 }

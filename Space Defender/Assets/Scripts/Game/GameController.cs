@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Assets.Scripts.Enemy;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -34,11 +35,22 @@ namespace Assets.Scripts.Game
         {
             FindObjectOfType<Player.Player>().HitWithCurrentHealth += OnPlayerHitWithCurrentHealth;
 
+            FindObjectOfType<EnemyShip>().Death += OnEnemyShipDeath;
+
             // find enemy
             // find enemy lasers
             // find enemy lances
             // find enemy engines
             // find other enemy things if necessary
+        }
+
+        private void OnEnemyShipDeath()
+        {
+            if (!_gameOver)
+            {
+                _gameOver = true;
+                GameOver.SafeCallDelegate();
+            }
         }
 
         private void OnPlayerHitWithCurrentHealth(float val)

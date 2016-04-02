@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Assets.Scripts.Enemy.Weapons;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -30,11 +31,35 @@ namespace Assets.Scripts.Enemy
             _totalLaserTurrets = _currentLaserTurrets = laserTurrets.Count();
             _totalLanceTurrets = _currentLanceTurrets = lanceTurrets.Count();
 
-            foreach (var laserTurret in laserTurrets) laserTurret.Death += () => _currentLaserTurrets--;
-            foreach (var lanceTurret in lanceTurrets) lanceTurret.Death += () => _currentLanceTurrets--;
+            foreach (var laserTurret in laserTurrets) laserTurret.Death += LaserTurretOnDeath;
+            foreach (var lanceTurret in lanceTurrets) lanceTurret.Death += LanceTurretOnDeath;
 
             Debug.Log("Found " + _totalLaserTurrets + " laser turrets");
             Debug.Log("Found " + _totalLanceTurrets + " lance turrets");
+        }
+
+        private void LaserTurretOnDeath()
+        {
+            _currentLaserTurrets--;
+            UpdateEnemyAfterComponentDeath();
+        }
+
+        private void LanceTurretOnDeath()
+        {
+            _currentLanceTurrets--;
+            UpdateEnemyAfterComponentDeath();
+        }
+
+        // Note: in future this will enable other weapons/engines/fighters as parts of the enemy is destroyed
+        private void UpdateEnemyAfterComponentDeath()
+        {
+            if (IsEnemyDestroyed())
+                FireDeathEvent();
+        }
+
+        private bool IsEnemyDestroyed()
+        {
+            return _currentLaserTurrets == 0 && _currentLanceTurrets == 0;
         }
 
         protected override void OnStart()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Assets.Scripts.Enemy;
 using Assets.Scripts.Enemy.Weapons;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -21,6 +22,7 @@ namespace Assets.Scripts.Game
         private void SubscribeToGameObjects()
         {
             FindObjectOfType<Player.Player>().HitWithCurrentHealth += OnPlayerHit;
+            FindObjectOfType<EnemyShip>().Death += OnEnemyShipDeath;
             FindObjectOfType<GameController>().GameOver += OnGameOver;
 
             foreach (var enemyTurret in FindObjectsOfType<EnemyLaserTurret>())
@@ -72,6 +74,11 @@ namespace Assets.Scripts.Game
         private static void OnPlayerHit(float health)
         {
             //Debug.Log(string.Format("Player hit, health: {0}", health));
+        }
+
+        private void OnEnemyShipDeath()
+        {
+            Debug.Log("Enemy ship has been destroyed");
         }
 
         private static void OnEnemyLaserTurretDeath()
